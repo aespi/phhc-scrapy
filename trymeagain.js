@@ -4,7 +4,10 @@ const axios = require('axios');
 const { convertArrayToCSV } = require('convert-array-to-csv');
 const fs = require('fs');
 const orderBy = require('lodash').orderBy;
-const qs = require('qs');
+// const qs = require('qs');
+const HttpsProxyAgent = require('https-proxy-agent').HttpsProxyAgent;
+// import { HttpsProxyAgent } from 'https-proxy-agent';
+// const agent = new HttpsProxyAgent('http://223.178.208.205:80');
 const reqHeader = [
   'Writ No',
   'Petitioner Name',
@@ -22,7 +25,9 @@ let sessCookie = '';
 let finalData = [];
 let ordinaryCase = [];
 let urgentCase = [];
-const instance = axios.create();
+const instance = axios.create({
+  // httpsAgent: agent
+});
 // axiosRetry(instance, {
 //   retries: 5, // Number of retries
 //   retryDelay: axiosRetry.exponentialDelay // Exponential backoff
@@ -212,7 +217,7 @@ async function getCaseDetails(hrefStr, caseType, relatedWith = '', oldValues = {
     }
   } catch (err) {
     console.error('SOMETHING WENT WRONG');
-    throw new Error('FAILEDDD line 214');
+    throw 'FAILEDDD line 214';
   }
 }
 
@@ -221,7 +226,6 @@ async function getTotalCase(conf) {
   const response = await instance.request({
     method: 'POST',
     header: {
-      Referer: 'https://phhc.gov.in/home.php?search_param=dist_cl',
       Connection: 'keep-alive',
       cookie: sessCookie,
       Accept:
