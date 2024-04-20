@@ -75,7 +75,7 @@ function generateFile() {
     });
   } catch (err) {
     console.log('File saving FAILED.\n Try again....');
-    throw new Error('FAILEDDD');
+    throw new Error('FAILEDDD line 78');
   }
 }
 function getCookie(date) {
@@ -211,7 +211,7 @@ async function getCaseDetails(hrefStr, caseType, relatedWith = '', oldValues = {
     }
   } catch (err) {
     console.error('SOMETHING WENT WRONG');
-    throw new Error('FAILEDDD');
+    throw new Error('FAILEDDD line 214');
   }
 }
 
@@ -280,6 +280,6 @@ module.exports.start = async function (date) {
     }
   } catch {
     console.log('!!!!!ENGINE failed to start!!!!!');
-    throw new Error('FAILEDDD');
+    throw new Error('FAILEDDD line 283');
   }
 };
