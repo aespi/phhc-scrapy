@@ -1,10 +1,6 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
-const axiosRetry = require('axios-retry').default;
-axiosRetry(axios, {
-  retries: 5, // Number of retries
-  retryDelay: axiosRetry.exponentialDelay // Exponential backoff
-});
+// const axiosRetry = require('axios-retry').default;
 const { convertArrayToCSV } = require('convert-array-to-csv');
 const fs = require('fs');
 const orderBy = require('lodash').orderBy;
@@ -27,6 +23,10 @@ let finalData = [];
 let ordinaryCase = [];
 let urgentCase = [];
 const instance = axios.create();
+// axiosRetry(instance, {
+//   retries: 5, // Number of retries
+//   retryDelay: axiosRetry.exponentialDelay // Exponential backoff
+// });
 function printProgress() {
   // process.stdout.clearLine(); // Clear the current line
   // process.stdout.cursorTo(0); // Move the cursor to the beginning of the line
@@ -94,6 +94,7 @@ function getCookie(date) {
         url: 'https://phhc.gov.in/home.php?search_param=jud_cl',
         data: `cl_date='${date}'&t_jud_code=655&t_list_type=&submit=Search+Case`
       });
+      console.log('API HIT COMPLTEREEE');
       sessCookie = axiosResponse.headers['set-cookie'][0];
       instance.defaults.headers.common['Cookie'] = sessCookie;
       console.log('COOKKIEEE', sessCookie);
