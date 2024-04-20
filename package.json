@@ -1,0 +1,25 @@
+{
+  "name": "scrapy",
+  "version": "1.0.0",
+  "description": "api scraping basic",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.2.3",
+    "body-parser": "^1.20.1",
+    "cheerio": "^1.0.0-rc.12",
+    "convert-array-to-csv": "^2.0.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "qs": "^6.12.1"
+  }
+}

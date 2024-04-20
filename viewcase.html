@@ -1,0 +1,639 @@
+<head>
+<script src="./include/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/body.css">
+<title> Punjab & Haryana High Court </title>
+<script type="text/javascript" src="./include/jquery-1.6.4.min.js"></script>
+
+
+
+
+
+<!-- Increase Decrease size -->
+         
+         
+          <script type="text/javascript">
+		  var counter = 0;
+
+         $(document).ready(function(){   
+			 
+           var originalSize = $('td').css('font-size');         
+          // reset        
+           $(".resetMe").click(function(){
+			   counter=0;
+          $('td').css('font-size', originalSize);   
+		  $('th').css('font-size', originalSize);
+		  sessionStorage.setItem("fontsize",originalSize );
+		  
+           });
+         
+           // Increase Font Size     
+		   
+           $(".increase").click(function(){   
+			
+			if(counter<2)
+			{
+				  counter++;
+				  var currentSize = $('td').css('font-size');         
+				  var currentSize = parseFloat(currentSize)*1.2;          
+				  $('td').css('font-size', currentSize);  
+				  $('th').css('font-size', currentSize); 
+				  sessionStorage.setItem("fontsize", currentSize);
+				 
+				  return false;  
+			}
+		
+                 
+          });        
+		  
+           // Decrease Font Size       
+           $(".decrease").click(function(){   
+			   if(counter>2 || counter==0 || counter!=-1)
+			   {
+			   counter--;
+			   var currentFontSize = $('td').css('font-size');        
+			   var currentSize = $('td').css('font-size');        
+			   var currentSize = parseFloat(currentSize)*0.8;        
+			     $('td').css('font-size', currentSize);  
+			     $('th').css('font-size', currentSize);
+				 sessionStorage.setItem("fontsize", currentSize);
+				
+			   return false;  
+			   }
+                  
+           });         
+         });
+         
+
+	$(window).load(function()
+	{  
+	 var currentSize=sessionStorage.getItem("fontsize");
+	 $('td').css('font-size', currentSize);  
+	 $('th').css('font-size', currentSize);
+	});
+
+		  
+	function changeBodyBg(color)
+		{
+        document.body.style.background = color;
+		
+		}
+
+function dark_b() 
+	{
+  $('b').each(function(idx, obj)
+  {
+    var txt = $(this).text();
+     $(this).css('color', 'red');
+  });
+
+   $('td').each(function(idx, obj) {
+    var txt = $(this).text();
+     $(this).css('color', 'red');
+  });
+
+   $('a').each(function(idx, obj) {
+    var txt = $(this).text();
+     $(this).css('color', 'red');
+  });
+
+   $('span').each(function(idx, obj) {
+    var txt = $(this).text();
+     $(this).css('color', 'red');
+  });
+  
+ 
+
+  sessionStorage.setItem("theme", "dark");
+}
+
+function orignal_b() 
+{
+  $('b').each(function(idx, obj) {
+    var txt = $(this).text();
+     $(this).css('color', '#003267');
+  });
+
+   $('td').each(function(idx, obj) {
+    var txt = $(this).text();
+     $(this).css('color', '#003267');
+  });
+
+ $('a').each(function(idx, obj) {
+    var txt = $(this).text();
+     $(this).css('color', '#003267');
+  });
+
+   $('span').each(function(idx, obj) {
+    var txt = $(this).text();
+     $(this).css('color', '#003267');
+  });
+
+  sessionStorage.setItem("theme", "normal");
+}
+
+function myFunctiona() {
+  var a=sessionStorage.getItem("theme");
+  
+ // alert(a);
+  if(a=='dark')
+	{
+   dark_b();
+   changeBodyBg('black');
+  }
+  else
+	{
+  orignal_b();
+  changeBodyBg('white');
+  }
+  
+}
+
+</script>
+</head>
+
+<html lang="en">
+<body onload="myFunctiona();">
+<br />
+
+<table width="100%" border="1" cellspacing="0" cellpadding="0" align="center">
+		<tr>
+    	<td colspan="10" align="center"><img src="../data/banner.jpg"  width="100%" alt="High Court of Punjab and Haryana Chandigarh"/>
+		</td>
+
+	<img  src="../data/original.jpg" onclick="orignal_b();changeBodyBg('white');"style="float:right;margin-right:5px;height:25px;" alt="Light Theme"/>
+	
+	<img  src="../data/MegentaOnBlack.jpg" onclick="dark_b(); changeBodyBg('black');"style="float:right;margin-right:5px;height:25px;"alt="Dark Theme" />
+  
+    <input  type="button" class="resetMe" value=" A " style="float:right;margin-right:5px;height:25px;">
+	
+	<input type="button" class="decrease" value=" A- " style="float:right;margin-right:5px;height:25px;">
+
+	<input type="button" class="increase" value=" A+ " style="float:right;margin-right:5px;height:25px;">
+
+
+  	</tr>
+  	<tr height="0%">
+   	</tr>
+    <tr>
+	</tr>
+	<tr><td colspan="10"><!DOCTYPE html>
+<html>
+  <head>
+    
+    <style>
+   .wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 25px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.wrapper p {
+  position: relative;
+  margin: 0;
+  line-height: 25px;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+    </style>
+  </head>
+  <body>
+       <div class="wrapper">
+	    
+     <p><font size="4" color ="#0000FF">WELCOME to Case Status System of Punjab and Haryana High Court. <!--The official website of this  Court i.e. https://highcourtchd.gov.in is under Maintenance, and will be available shortly--></font></p> 
+    
+	</div>
+	
+  </body>
+</html>
+
+
+
+
+</td></tr>
+	<tr>
+		<td colspan="10">
+			<table align="center" width="100%" border="1">
+				<tr valign="top">		
+  	<td align="left" width="15%"><table width="100%"  border="0" align="left" bordercolor="#000000"  cellspacing="4" class ='menu_table'>
+<tr>
+    <td bgcolor=#003267 ><font color=white size=4 >Display Board</font></p></b></td>
+</tr>
+<tr>
+    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=display"><b>Display Board</b></a></td>
+</tr>
+
+<tr>
+   <td bgcolor=#003267 ><font color=white size=4 >Video Conferencing</font></p></b></td>
+</tr>
+<tr>
+    <td><img src="../images/new.gif" alt="New Feature"><a href="./home.php?search_param=vc_final"><b> VC Hearing</b></a></td>
+</tr>
+
+<tr>
+   <td bgcolor=#003267 ><font color=white size=4 >Online Mentioning</font></p></b></td>
+</tr>
+<tr>
+    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=mention_req"><b>Mentioning Request</b></a></td>
+</tr>
+<tr>
+  <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=mention_status"><b>Check Status</b></a></td>
+</tr>
+
+<!--
+<tr>
+    <td bgcolor=#003267 ><font color=white size=4 ><img src="../images/new.gif" alt="New Feature">Ordinary Filing Token</font></p></b></td>
+  </tr>
+  <tr>
+    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=ordTokenRequest"><b>Token Request</b></a></td>
+  </tr>
+<tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=tokenStatusOrd"><b>Token Status</b></a></td>
+  </tr>
+<tr>
+    <td bgcolor=#003267 ><font color=white size=4 ><img src="../images/new.gif" alt="New Feature">Online Gate Pass</font></p></b></td>
+  </tr>
+  <tr>
+    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=gate_pass"><b>Apply Gate Pass</b></a></td>
+  </tr>
+<tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=print_pass"><b>Print Gate Pass</b></a></td>
+  </tr>
+<tr>  
+!-->
+  <tr>
+    <td bgcolor=#003267 ><font color=white size=4 >Filing Search</font></p></b></td>
+  </tr>
+  <tr>
+    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=diary"><b>Diary No.</b></a></td>
+  </tr>
+<tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=caveat"><b>Caveat No.</b></a></td>
+  </tr>
+<tr>
+    <td bgcolor=#003267 ><font color=white size=4 >Case Search</font></td>
+  </tr>
+  <tr>
+    <td >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<a href="./home.php?search_param=case"><b>Case No.</b></a></td>
+  </tr>
+  <tr>
+    <td >  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=pname"> <b>Party Name</b></a></td>
+  </tr>
+  <tr>
+    <td >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=aname"> <b>Advocate Name</b></a></td>
+  </tr>
+    <tr>
+    <td >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=fir"> <b>FIR No.</b></a></td>
+  </tr>
+    <tr>
+    <td >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=complnt"> <b>Complaint No.</b></a></td>
+  </tr>
+    <tr>
+    <td >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=lac"> <b>LAC/LR No.</b></a></td>
+  </tr>
+  <tr>
+    <td >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=lc"><b> Lower Court</b></a></td>
+  </tr>
+  <tr>
+    <td >  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=impug"> <b>Impugned Order</b></a></td>
+  </tr>
+  <tr>
+    <td >  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.php?search_param=refer"> <b>Referred Cases</b></a></td>
+  </tr>
+<tr>
+    <td bgcolor=#003267 ><font color=white size=4 >Certified Copy/Inspection</font></p></b></td>
+  </tr>
+      <tr>
+    <td ><a href="home.php?search_param=copypet"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy Petition</font></b></a></td>
+  </tr>
+
+  <tr>
+    <td ><a href="home.php?search_param=insp"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inspection  Request</font></b></a></td>
+  </tr>
+  <tr>
+    <td ><a href="home.php?search_param=soft_copy_petition"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download Uncertified Copy</font></b></a></td>
+  </tr> 
+    <tr>
+	<td ><a href="https://phhc.gov.in/E_COPY/"><b> Apply e-Copy/Inspection online</b></a></td>	
+  </tr>
+<tr>  <td bgcolor=#003267 ><font color=white size=4 >Judgment Search</font></p></b></td>
+  </tr>
+      <tr>
+    <td ><a href="home.php?search_param=judgement"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Case No.</font></b></a></td>
+  </tr>
+   <tr>
+    <td ><a href="home.php?search_param=jud_judgement"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Judge Wise</font></b></a></td>
+  </tr>
+     <tr>
+    <td ><a href="home.php?search_param=free_text_search_judgment"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Free Text Search</font></b></a></td>
+  </tr>
+<tr>
+    <td ><a href="home.php?search_param=fb_referral"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Bench Referred Cases</font></b></a></td>
+  </tr>
+<tr>
+	 <td ><a href="home.php?search_param=db_referral"> <b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Division Bench Referred Cases</font></b></a></td>
+  </tr>
+            <tr>
+    <td ><a href="home.php?search_param=resjud"> <b>   <img src="../images/new.gif" alt="New Feature">Restricted Judgment</font></b></a></td>
+  </tr>
+<tr>
+    <td bgcolor=#003267 ><font color=white size=4 >Cause List</font></p></b></td>
+  </tr>
+  <tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=cl_pdf"><b>Cause List(PDF)</b></a></td>
+  </tr>
+  <tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=jud_cl"><b>Judge Wise Cause List</b></a></td>
+  </tr>
+  <tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=jud_reg_cl"><b>Judge Wise Regular List</b></a></td>
+  </tr>
+  <tr>
+    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=med_cl"><b>Mediation Cause List</b></a></td>
+  </tr>
+  <tr>
+    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=dist_cl"><b>District Wise Cause List</b></a></td>
+  </tr>
+   <tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=jud_consol"><b>Summary of Cases Listed</b></a></td>
+  </tr>
+   <tr>
+    <td bgcolor=#003267 ><font color=white size=4 >Future Listing Cases</font></p></b></td>
+  </tr>
+  <tr>
+    <td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=future_cases"><b>To be Listed Cases</b></a></td>
+  </tr>
+	<tr>
+	<td >    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./home.php?search_param=ag_hry"><b>AG Haryana Cases</b></a></td>
+  </tr>
+  </table></td>
+    <td  width="68%"><head>
+<title>Punjab & Haryana High Court: Search By Case Number</title>
+<link rel="stylesheet" href="../css/calendarview.css" type="text/css" />
+<script type="text/javascript" src="../include/prototype.js"></script>
+<script type="text/javascript" src="../include/calendarview.js"></script>
+
+
+<script src="../include/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="../css/jquery-ui.css">
+<script src="../include/jquery-ui.js"></script>
+
+   
+
+
+<script>
+  $( function() {
+    $( "#cl_date" ).datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true,
+            changeYear: true });
+  } );
+  </script>
+
+
+<style type="text/css" title="text/css"media="all">
+.error {
+	font-weight: bold;
+	color: #C00
+	   }
+</style>
+</head>
+<body>
+<br />
+<br />
+<link rel="stylesheet" type="text/css" href="./include/date_check.js">
+<script language="JavaScript" type="text/javascript">
+
+function validation_form()
+{
+	var cl_date = document.getElementById('cl_date').value;
+	if('' == cl_date)		
+	{
+		alert("Please Enter Cause List Date");
+		document.getElementById('cl_date').focus();
+		return false;
+	}
+
+	var cl_date = document.getElementById('cl_date').value;
+	if(cl_date.length != 10)		
+	{
+		alert("Please Enter Valid Cause List Date");
+		document.getElementById('cl_date').focus();
+		return false;
+	}
+	return true;
+}
+
+</script>
+    
+      <table id='tables_input' align="center" border="1" width="60%" cellpadding="2" cellspacing="3">
+        <tr>
+          <th colspan="2"  align="center"><strong>Judge Wise Cause List</strong></th>
+	    </tr>
+          <form action="./home.php?search_param=jud_cl" method="post"  name="frm" id="frm" onSubmit=" return validation_form();">
+
+		  <tr>
+			<td   align="center"   class='text_label'><font color="RED">*</font>Cause List Date</td><td><input name="cl_date" id="cl_date" type="text" size="10" maxlength="10" > (DD/MM/YYYY) </td></tr>
+
+		  <tr><td   align="center" class='td_header_text'>Select Bench:  </td><td><select name='t_jud_code' ><option value =396>THE ACTING CHIEF JUSTICE</option><option value =452>MR. JUSTICE ARUN PALLI</option><option value =460>MRS. JUSTICE LISA GILL</option><option value =462>MR. JUSTICE SURESHWAR THAKUR</option><option value =480>MR. JUSTICE DEEPAK SIBAL</option><option value =488>MR. JUSTICE ANUPINDER SINGH GREWAL</option><option value =514>MR. JUSTICE SUDHIR SINGH</option><option value =518>MR. JUSTICE SANJEEV PRAKASH SHARMA</option><option value =528>MR. JUSTICE GURVINDER SINGH GILL</option><option value =536>MR. JUSTICE RAJBIR SEHRAWAT</option><option value =540>MR. JUSTICE ANIL KSHETARPAL</option><option value =548>MR. JUSTICE MAHABIR SINGH SINDHU</option><option value =556>MRS.  JUSTICE MANJARI NEHRU KAUL</option><option value =560>MR. JUSTICE HARSIMRAN SINGH SETHI</option><option value =572>MR. JUSTICE LALIT BATRA</option><option value =582>MR. JUSTICE ANOOP CHITKARA</option><option value =585>MR. JUSTICE SUVIR SEHGAL</option><option value =595>MRS. JUSTICE ALKA SARIN</option><option value =605>MR. JUSTICE JASGURPREET SINGH PURI</option><option value =620>MRS. JUSTICE MEENAKSHI I. MEHTA</option><option value =625>MR. JUSTICE KARAMJIT SINGH</option><option value =635>MRS. JUSTICE ARCHANA PURI</option><option value =640>MR. JUSTICE RAJESH BHARDWAJ</option><option value =645>MR. JUSTICE VIKAS BAHL</option><option value =650>MR. JUSTICE VIKAS SURI</option><option value =655  selected>MR. JUSTICE SANDEEP MOUDGIL</option><option value =660>MR. JUSTICE VINOD S. BHARDWAJ</option><option value =665>MR. JUSTICE PANKAJ JAIN</option><option value =670>MR. JUSTICE JASJIT SINGH BEDI</option><option value =673>MS. JUSTICE LAPITA BANERJI</option><option value =675>MS. JUSTICE NIDHI GUPTA</option><option value =680>MR. JUSTICE SANJAY VASHISTH</option><option value =685>MR. JUSTICE TRIBHUVAN DAHIYA</option><option value =690>MR. JUSTICE NAMIT KUMAR</option><option value =695>MR. JUSTICE HARKESH MANUJA</option><option value =700>MR. JUSTICE AMAN CHAUDHARY</option><option value =705>MR. JUSTICE N.S. SHEKHAWAT</option><option value =710>MR. JUSTICE HARSH BUNGER</option><option value =715>MR. JUSTICE JAGMOHAN BANSAL</option><option value =720>MR. JUSTICE DEEPAK MANCHANDA</option><option value =725>MR. JUSTICE ALOK JAIN</option><option value =730>MR. JUSTICE KULDEEP TIWARI</option><option value =735>MR. JUSTICE GURBIR SINGH</option><option value =740>MR. JUSTICE DEEPAK GUPTA</option><option value =745>MRS. JUSTICE AMARJOT BHATTI</option><option value =750>MRS. JUSTICE RITU TAGORE</option><option value =755>MRS. JUSTICE MANISHA BATRA</option><option value =760>MS. JUSTICE HARPREET KAUR JEEWAN</option><option value =765>MRS. JUSTICE SUKHVINDER KAUR</option><option value =770>MR. JUSTICE SANJIV BERRY</option><option value =775>MR. JUSTICE VIKRAM AGGARWAL</option><option value =780>MR. JUSTICE HARPREET SINGH BRAR</option><option value =785>MR. JUSTICE SUMEET GOEL</option><option value =790>MRS. JUSTICE SUDEEPTI SHARMA</option><option value =795>MS. JUSTICE KIRTI SINGH</option><option value =901>LOK ADALAT BENCH - 1</option><option value =902>LOK ADALAT BENCH - 2</option><option value =903>LOK ADALAT BENCH - 3</option><option value =904>LOK ADALAT BENCH - 4</option><option value =905>LOK ADALAT BENCH - 5</option><option value =600>REGISTRAR-JUDICIAL</option></select></td></tr>
+
+		  <tr><td align="center" class="td_header_text">Select List Type: </td>
+		  <td><select name="t_list_type" id="t_list_type" >
+		  		  		  <option value="U" selected>URGENT</option>
+		  		  <option value="">Select All</option>
+		  <option value="U">URGENT</option>
+		  <option value="O">ORDINARY</option>
+		  <option value="T">TAKENUP</option>
+		  <option value="S">SPECIAL</option>
+		  <option value="A">PRE LOK ADALAT</option>
+		  <option value="K">LOK ADALAT</option>
+		  <option value="E">ELECTION</option>
+		  <option value="Q">LIQUIDATION (URGENT)</option>
+		  <option value="L">LIQUIDATION (ORDINARY)</option>
+          <option value="F">COMMERCIAL (URGENT)</option>
+		  <option value="G">COMMERCIAL (ORDINARY)</option>
+          <option value="Y">FOR-ORDER</option>
+          <option value="V">OLD-CASES</option>
+		 
+		  </select>
+		  </td>
+		  </tr>
+
+		  <tr><td colspan="2"  align="center"><input name="submit" type="submit" value="Search Case" ></td></tr>
+          </form>
+        
+</table>
+<br><br>
+<center>
+    <table border=0 cellpadding=0 cellspacing=0 width=900 style='page-break-after:always;' id='abce'>
+     <tr align=center><td colspan=4><table border=1 cellpadding=0 cellspacing=0 width=900 style='page-break-after:always;'>
+                                    <tr><td style='font-size:11pt'><b><center>URGENT S.B.  MOTION PETITION FOR THE SATURDAY DATED 20/04/2024 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>CR NO 62</u></center></b><center><br><b>HON'BLE MR. JUSTICE SANDEEP MOUDGIL</b></center></td></tr></table><br></td></tr>
+    <tr><td colspan=4 style='text-align:center;font-size:13px;font-weight:bold'>
+    <pre>
+Dedicated VC Link for Hybrid Hearing: <a
+href="https://zoom.us/my/vcphhc62"
+target="_new">https://zoom.us/my/vcphhc62</a>
+
+Meeting ID is 416 614 1467
+
+
+</pre></td></tr>
+                                        <tr>
+                                            <td valign=top width='5%'>101*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=Z0RUcmFNT3prKzFldWdNYTgzUGRnTmQweXBmOTAwZ2V3L1NNbjUxZWF0VT0=' target='_blank'>CRM-M-19200-2024</a></b> (AB) </td>
+                                            <td valign=top width='35%'>HARPREET SINGH  V/S STATE OF PUNJAB</td>
+                                            <td valign=top width='40%'>RAVI MALHOTRA A.G. PUNJAB, ASHOK KUMAR, SURINDER KAUR</td>
+                                        </tr>
+                                        <tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td>
+                                        </tr>
+                                        <tr><td valign=top width='5%'>102*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=TERCSnZKVmR1aFJ1czlqc25oaGJVeTR6WHZLL0x1ejF2T2lMWFRqUmFQaz0=' target='_blank'>CRM-M-19309-2024</a></b> (AB) </td>
+                                            <td valign=top width='35%'>AMRIK SINGH  V/S STATE OF PUNJAB</td>
+                                            <td valign=top width='40%'>GHULAM NABI MALIK A.G. PUNJAB</td>
+                                        </tr>
+                                        <tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td>
+                                        </tr>
+                                        <tr><td valign=top width='5%'>103*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=cXVoTlYyZTFFTUxsdFFRMmtJc1VJQT09' target='_blank'>CRM-16711-2024</a></b> (RBPB) </td>
+                                            <td valign=top width='35%'>SUKHRAJ SINGH  V/S STATE OF PUNJAB</td>
+                                            <td valign=top width='40%'>RAJNI GUPTA A.G. PUNJAB, ADVOCATE GENERAL PUNJAB</td>
+                                        </tr>
+                                        <tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='enq_caseno.php?case_id=M3dBSDNFL1M2aUtKbUZkZzJkU1Y2Zz09' target='_blank'>CRM-M-7176-2024</a></td>
+                                                    <td colspan=1> &nbsp; </td><td colspan=1> &nbsp;RAJNI GUPTA, A.G. PUNJAB, ANKUR JAIN&nbsp;, Harkirat Singh Randhawa&nbsp;</td>
+                                        </tr>
+                                        <tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;(MAIN DECIDED)</td>
+                                        </tr>
+                                        <tr><td valign=top width='5%'>104*&nbsp;<b>IV</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=dER2RzQyeXVqKzZ0cE15aDBQWS9Pdz09' target='_blank'>CRM-16069-2024</a></b> (NDPS) </td>
+                                            <td valign=top width='35%'>MANDIP SINGH  V/S STATE OF PUNJAB</td>
+                                            <td valign=top width='40%'>KRISHAN SINGH DADWAL A.G. PUNJAB, NARESH KUMAR , NEHA JAIN</td></tr><tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='enq_caseno.php?case_id=UGYxMDEzVEVVZmpWVGNudmdTMk51OFN2RTBjakRMNU5iM1pOMk5xMzE2az0=' target='_blank'>CRA-S-4499-SB-2018</a></td>
+                                                    <td colspan=1> &nbsp; </td><td colspan=1> &nbsp;KRISHAN SINGH DADWAL, ASHOK KUMAR SINGLA SR DAG PB&nbsp;, HIMANI ARORA AAG PB&nbsp;, JASLEEN KAUR SIDHU AAAG PB&nbsp;, NARESH KUMAR &nbsp;, PRABHJOT SINGH WALIA AAG PB&nbsp;, RAMANDEEP SINGH SANDHU SR DAG PB&nbsp;, SURINDER PAL SINGH TINNA AAG PB&nbsp;</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;(04-JAN-24@409[REGULAR])</td></tr><tr><td valign=top width='5%'>105*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=aEFQUHZDNU50eU1Fd3FaSmJLQmdnS0p4S01HN1RKVXgvSDVqbE9tZkRnUT0=' target='_blank'>CRM-M-19234-2024</a></b> (DIR) </td>
+                                            <td valign=top width='35%'>BEANT SINGH AND OTHERS  V/S STATE OF PUNJAB AND OTHERS</td>
+                                            <td valign=top width='40%'>GAURAVJIT SINGH JAGPAL A.G. PUNJAB, GAURAVJIT SINGH JAGPAL, SACHIN KALIA</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>106*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=MmdJR01LWHdDRXdya0R2ZHBDK1RZdz09' target='_blank'>CRWP-3452-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>SARLA AND ANOTHER  V/S STATE OF HARYANA AND OTHERS</td>
+                                            <td valign=top width='40%'>SUMAN DEVI A.G. HARYANA</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>107*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=c0dSOFpwQjVuQWFESC9RWVZ4V0hrdz09' target='_blank'>CRWP-3456-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>MOHAMMAD AHMED AND ANR  V/S STATE OF PUNJAB AND ORS</td>
+                                            <td valign=top width='40%'>MOHD. YOUSAF A.G. PUNJAB, ARZOO MODI</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>108*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=eDNZQWprRi82aUYzN1Q4ZlJUTEl5dz09' target='_blank'>CRWP-3485-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>ARVIND KUMAR AND ANOTHER  V/S STATE OF UT CHANDIGARH AND OTHERS</td>
+                                            <td valign=top width='40%'>RAJENDER KUMAR DHANIA </td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>109*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=cVd1V1lqeUNWRzBybG1WZXc1M1pydz09' target='_blank'>CRWP-3486-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>NISHU AND ANOTHER  V/S STATE OF PUNJAB AND OTHERS</td>
+                                            <td valign=top width='40%'>NARESH CHANDER A.G. PUNJAB, BALAM SINGH, KRIPAL SINGH</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>110*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=MVV4b0lSTTJOeE5mZnBjYVE1OFZIQT09' target='_blank'>CRWP-3487-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>SHILPA RANI AND ANR  V/S STATE OF HARYANA AND ORS</td>
+                                            <td valign=top width='40%'>ABHISHEK SINGLA A.G. HARYANA, TANYA SEHGAL</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>111*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=cUxOR2lId2xnZHBIOEdCajgzcEJCQT09' target='_blank'>CRWP-3495-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>GURPREET KAUR AND ANOTHER  V/S STATE OF PUNJAB AND OTHERS</td>
+                                            <td valign=top width='40%'>HARINDER SINGH A.G. PUNJAB</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>112*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=UXg3cDB1bkZuamNIUUU5UzBvNjdWUT09' target='_blank'>CRWP-3502-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>NISHA AND ANR  V/S STATE OF PUNJAB AND ORS</td>
+                                            <td valign=top width='40%'>YOGESH KUMAR ANEJA A.G. PUNJAB</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>113*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=eUpIUEUxT3QvVnoyMnpaLzJYbFkyZz09' target='_blank'>CRWP-3516-2024</a></b> ((PROT)) </td>
+                                            <td valign=top width='35%'>ANISHA SINHA AND ANOTHER  V/S STATE OF PUNJAB AND OTHERS</td>
+                                            <td valign=top width='40%'>BHUPENDER SINGH A.G. PUNJAB</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;(MENTIONING FOR 20.04.2024)</td></tr><tr><td valign=top width='5%'>114*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=VnNGK1h5dW9OaEREaEZYV3l4cTR6UT09' target='_blank'>CRM-16993-2024</a></b> (QP COMGEN) </td>
+                                            <td valign=top width='35%'>KHUSHWANT SINGH  V/S STATE OF UT CHD AND OTHERS</td>
+                                            <td valign=top width='40%'>SHIVAM GROVER , AKSHAY MITTAL, IVAN SINGH KHOSA</td></tr><tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='enq_caseno.php?case_id=RUlyOThMWVpmZlA1dFg0ZUR6Tk55UT09' target='_blank'>CRM-M-3000-2024</a></td>
+                                                    <td colspan=1> &nbsp; </td><td colspan=1> &nbsp;ABHISHEK CHHA, MANDEEP SINGH&nbsp;</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>115*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=Q2c5NllIZjZWaUl1bkJ4Mlh0OG85dz09' target='_blank'>CRM-16006-2024</a></b> (QP COMGEN) </td>
+                                            <td valign=top width='35%'>ARSHDEEP SINGH  V/S STATE OF PUNJAB AND ORS</td>
+                                            <td valign=top width='40%'>HARCHAND SINGH BATTH A.G. PUNJAB, HARCHAND SINGH BATTH</td></tr><tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='enq_caseno.php?case_id=bWtsZXlOYnRuKzRNRGRzUm1vNTNZRnA4bFVHa0tFb2xBTldlT3dIY1ByOD0=' target='_blank'>CRM-M-13803-2024</a></td>
+                                                    <td colspan=1> &nbsp; </td><td colspan=1> &nbsp;HARCHAND SINGH BATTH, A.G. PUNJAB, HARCHAND SINGH BATTH&nbsp;</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>116*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=L0RxcjVQcUFIU3pIYmxRZng2anhNWC9Md3A3VldHSjlqOUpFcW93S2tZZz0=' target='_blank'>CRM-M-15189-2024</a></b> (QP COMGEN) </td>
+                                            <td valign=top width='35%'>AMANDEEP KAUR AND ANR  V/S STATE OF PUNJAB AND ANR</td>
+                                            <td valign=top width='40%'>KARANJEET SINGH BRAR A.G. PUNJAB</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>117*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=MGU1QlljdDRWeDVoSGNXTS9talZ1SHF2Sy9xbHdZVFBhakxQK1VleTR5QT0=' target='_blank'>CRM-M-19115-2024</a></b> (QP COMGEN) </td>
+                                            <td valign=top width='35%'>RAM CHARAN  V/S STATE OF HARYANA AND OTHERS</td>
+                                            <td valign=top width='40%'>CHANDER KANT RANA A.G. HARYANA</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>118*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=RGVJRVkrT3BHS2phYWEraEZtT2poMHQ1Ti96Z3NreVRPVHBBMlp6U0dsbz0=' target='_blank'>CRM-M-19323-2024</a></b> (QP COMGEN) </td>
+                                            <td valign=top width='35%'>HARMANDEEP SINGH  V/S STATE OF PUNJAB AND ANR</td>
+                                            <td valign=top width='40%'>ADITYA PRATAP SINGH A.G. PUNJAB, SANDEEP SHARMA</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>119*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=U3lsUngrZHdVUEx6RTNOWEExbXZjcThsOUhucW0zZUNZMngrVDlzc0VHOD0=' target='_blank'>CRM-M-19485-2024</a></b> (QP) </td>
+                                            <td valign=top width='35%'>PADAM BANSAL   V/S STATE OF HARYANA AND OTHERS</td>
+                                            <td valign=top width='40%'>KESHAVAM CHAUDHARI A.G. HARYANA, HARGUN SANDHU, KUNAL SHARMA, PARVEZ CHAUDHARY, SUNIL KUMAR</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;(MENTIONING FOR 20.04.2024)</td></tr><tr><td valign=top width='5%'>120*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=K2FseEZ0ditxTTVUbTNXR1BPNEVYZz09' target='_blank'>CRM-16821-2024</a></b> (QP PMLA) </td>
+                                            <td valign=top width='35%'>BHAVNA BHALLA ALIAS BHAWNA BHALLA  V/S DIRECTORATE OF INFORCEMENT</td>
+                                            <td valign=top width='40%'>PRADEEP VIRK , SAJAL BANSAL</td></tr><tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='enq_caseno.php?case_id=Y1h2U3lwMHZqNkdsSG9WSzRXKzRXYTA4TGMxMldmL0ZsOUc2cEFKOExHQT0=' target='_blank'>CRM-M-63274-2023</a></td>
+                                                    <td colspan=1> &nbsp; </td><td colspan=1> &nbsp;KARAN VIR NANDA, ANKIT BISHNOI&nbsp;, JYOTIKA PANESAR&nbsp;, SAJAL BANSAL&nbsp;, SHOBIT PHUTELA&nbsp;</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>121*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=ODE2Z1RERjVVNzYzWHU1V29NdFplYUpzRFEwZk9pSnl4YlorVllzeit0ST0=' target='_blank'>CRM-M-19177-2024</a></b> (DIR) </td>
+                                            <td valign=top width='35%'>SUKHWINDER KAUR  V/S STATE OF PUNJAB AND OTHERS</td>
+                                            <td valign=top width='40%'>RAJAN SINGH DADWAL A.G. PUNJAB</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr><tr><td valign=top width='5%'>122*&nbsp;<b>V</b></td>
+                                            <td valign=top width='20%'> <b><a href='enq_caseno.php?case_id=TSs2TjJjYTdOellRR1FURlFJdmVubkphWFFPWDU1T1pDWUdBUzRvZWRWUT0=' target='_blank'>CRM-M-19235-2024</a></b> (QP) </td>
+                                            <td valign=top width='35%'>ASHWANI KUMAR  V/S STATE OF HARYANA AND ANOTHER</td>
+                                            <td valign=top width='40%'>ABHIMANYU SINGH A.G. HARYANA, TRISHU KANWAR (MS.)</td></tr><tr valign=top><td colspan=2 align=right> </td><td colspan=2 align=left>&nbsp;&nbsp;</td></tr></table></table>
+</td>
+  				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td   colspan="10"align="center">
+			<html>
+<body>
+<table width="100%"  border="1" align="center" cellspacing="0" >
+  <center>
+  <tr align="center" >
+    <td align="center" style="line-height: 0.5; padding-bottom: 4.5px;"><center><font size="3"><b><br/>Designed and Developed by National Informatics Centre <br/><br/> Contents Published and Managed by Punjab & Haryana High Court , Chandigarh. <span style="float:right"><a href="http://highcourtchd.gov.in/?trs=disclaimer" target="_blank">Disclaimer</a></span><br> 
+    </b></font></td>
+
+  </tr>
+</table>
+
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<table width="100%" height="40%"border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+  <tr>
+    <td width="100%" align="center" valign="top" height="22" bgcolor="#999999"><b>&nbsp;&nbsp;  <strong><a href="index.php" target="_self">HOME</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><a href="http://hslsa.nic.in/" class="r" target="_blank">LEGAL AID </a>&nbsp;</b>&nbsp;&nbsp; <b><a href="phhc/disclaimer.htm" target="mainFrame" class="r">DISCLAIMER</a>&nbsp;&nbsp;&nbsp;&nbsp; </b>&nbsp;&nbsp; <b><a href="index.php?trs=contactus">CONTACT US&nbsp;</a></b> </td>
+  </tr>
+  <tr valign="top">
+    <td height="10"  align="center" bgcolor="#FFFFFF"><font color="#FFFF99" face="Verdana" size="1"></font><font color="#9900FF" face="Verdana" size="1">
+      Web
+      Site Designed and Developed by <b> Punjab and Haryana High,  Chandigarh.
+   </b></font></p></td>
+  </tr>
+  <tr valign="top">
+    <td height="3" colspan="2" align="center" bgcolor="#FFFFFF"><font color="#0000ff" face="Verdana" size="1">Best viewed in&nbsp; 1024x768
+      resolution</font> </td>
+  </tr>
+</table>-->
+
+		</td>
+	</tr>					
+</table>
+</body>
+</html>
