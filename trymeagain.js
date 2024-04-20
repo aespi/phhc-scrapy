@@ -79,6 +79,7 @@ function generateFile() {
   }
 }
 function getCookie(date) {
+  console.log('GETTTINNG COOKKIEEE');
   return new Promise(async (resolve, reject) => {
     try {
       const axiosResponse = await instance.request({
@@ -95,6 +96,7 @@ function getCookie(date) {
       });
       sessCookie = axiosResponse.headers['set-cookie'][0];
       instance.defaults.headers.common['Cookie'] = sessCookie;
+      console.log('COOKKIEEE', sessCookie);
       resolve(true);
     } catch (err) {
       console.log('!!!!ERROR WHILE CREATING SESSION!!!!');
@@ -214,6 +216,7 @@ async function getCaseDetails(hrefStr, caseType, relatedWith = '', oldValues = {
 }
 
 async function getTotalCase(conf) {
+  console.log('HITTING API...');
   const response = await instance.request({
     method: 'POST',
     header: {
@@ -249,6 +252,7 @@ async function getTotalCase(conf) {
     totalUrgentCase = hrefValues.length;
   }
   totalCase = totalCase + hrefValues.length;
+  console.log('totalCase:', totalCase);
 }
 
 module.exports.start = async function (date) {
