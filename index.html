@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data to PDF Converter</title>
+    <style>
+      #loader {
+        display: none;
+        background: gray;
+        color: blue;
+        height: 100vh;
+        width: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader">Loading...</div>
+    <label for="dateInput">Select Date:</label>
+    <input type="date" id="dateInput" />
+    <button onclick="downloadFile()">Generate PDF</button>
+
+    <script>
+      // Function to download the file
+      function downloadFile() {
+        document.getElementById('loader').style.display = 'block';
+        // Get the selected date from the input element
+        const selectedDate = document.getElementById('dateInput').value;
+
+        // Function to format date as dd/mm/yyyy
+        function formatDate(dateString) {
+          const [year, month, day] = dateString.split('-');
+          return `${day}/${month}/${year}`;
+        }
+
+        // URL of the API endpoint serving the file
+
+        fetch(`/download?date=${formatDate(selectedDate)}`, {
+          method: 'GET'
+          //   headers: {
+          //     'Content-Type': 'application/json'
+          //   },
+          //   body: JSON.stringify({})
+        })
+          .then(response => {
+            // Check if response is successful
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            // Return the response body as blob
+            return response.blob();
+          })
+          .then(blob => {
+            document.getElementById('loader').style.display = 'none';
+            // Create a new blob URL
+            const blobUrl = window.URL.createObjectURL(blob);
+            // Create a new anchor element
+            const a = document.createElement('a');
+            // Set the href attribute to the blob URL
+            a.href = blobUrl;
+            // Set the download attribute to the desired file name
+            // a.download = `data_${selectedDate}.csv`;
+            a.download = `Case-${selectedDate}.csv`;
+            // Append the anchor to the body
+            document.body.appendChild(a);
+            // Click the anchor to trigger the download
+            a.click();
+            // Remove the anchor from the body
+            document.body.removeChild(a);
+            // Revoke the blob URL
+            window.URL.revokeObjectURL(blobUrl);
+          })
+          .catch(error => {
+            alert('Failed to generate Report!!!!');
+            document.getElementById('loader').style.display = 'none';
+            console.error('There was a problem with the fetch operation:', error);
+          });
+      }
+    </script>
+  </body>
+</html>
