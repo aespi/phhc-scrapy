@@ -28,10 +28,12 @@ let ordinaryCase = [];
 let urgentCase = [];
 const instance = axios.create();
 function printProgress() {
-  process.stdout.clearLine(); // Clear the current line
-  process.stdout.cursorTo(0); // Move the cursor to the beginning of the line
-  process.stdout.write(`Urgent: ${urgentCase.length}/${totalUrgentCase}\t`);
-  process.stdout.write(`Ordinary: ${ordinaryCase.length}/${totalOrdinaryCase}`);
+  // process.stdout.clearLine(); // Clear the current line
+  // process.stdout.cursorTo(0); // Move the cursor to the beginning of the line
+  // process.stdout.write(`Urgent: ${urgentCase.length}/${totalUrgentCase}\t`);
+  // process.stdout.write(`Ordinary: ${ordinaryCase.length}/${totalOrdinaryCase}`);
+  console.log(`Urgent: ${urgentCase.length}/${totalUrgentCase}`);
+  console.log(`Ordinary: ${ordinaryCase.length}/${totalOrdinaryCase}`);
 }
 
 function generateFile() {
