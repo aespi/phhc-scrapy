@@ -241,7 +241,6 @@ async function getTotalCase(conf) {
     totalUrgentCase = hrefValues.length;
   }
   totalCase = totalCase + hrefValues.length;
-  console.log('totalCase:', totalCase);
 }
 
 module.exports.start = async function (date) {
@@ -266,6 +265,7 @@ module.exports.start = async function (date) {
       config.forEach(c => {
         getTotalCase(c);
       });
+      console.log('totalCase:', totalCase);
     }
   } catch {
     console.log('!!!!!ENGINE failed to start!!!!!');
