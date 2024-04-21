@@ -265,7 +265,6 @@ module.exports.start = async function (date) {
       config.forEach(c => {
         getTotalCase(c);
       });
-      console.log('totalCase:', totalCase);
     }
   } catch {
     console.log('!!!!!ENGINE failed to start!!!!!');
