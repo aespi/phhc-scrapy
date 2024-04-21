@@ -8,6 +8,7 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 let watcher;
+const csv = require('csv-parser');
 // const ongoingRequests = {};
 // const cancelReq = new AbortController();
 try {
@@ -38,6 +39,32 @@ try {
   app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
   });
+
+  app.get('/data', (req, res) => {
+    console.log('HIT REACHEDD');
+    const data = [];
+    const date = req.query.date;
+    // const filePath = __dirname + '/data.csv';
+    ENGINE.start(date);
+    watchAppJS(async () => {
+      console.log('data.csv has been generated or modified!');
+      if (watcher) {
+        watcher.close();
+      }
+      fs.createReadStream('data.csv')
+        .pipe(csv())
+        .on('data', row => {
+          data.push(row);
+        })
+        .on('end', () => {
+          res.json(data);
+          if (watcher) {
+            watcher.close();
+          }
+        });
+    });
+  });
+
   // Route to handle PDF generation request
   app.post('/download', (req, res) => {
     const filePath = __dirname + '/data.csv'; // Change this if app.js is in a different directory
