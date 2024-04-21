@@ -5,9 +5,6 @@ const { convertArrayToCSV } = require('convert-array-to-csv');
 const fs = require('fs');
 const orderBy = require('lodash').orderBy;
 // const qs = require('qs');
-const HttpsProxyAgent = require('https-proxy-agent').HttpsProxyAgent;
-// import { HttpsProxyAgent } from 'https-proxy-agent';
-// const agent = new HttpsProxyAgent('http://223.178.208.205:80');
 const reqHeader = [
   'Writ No',
   'Petitioner Name',
@@ -25,20 +22,12 @@ let sessCookie = '';
 let finalData = [];
 let ordinaryCase = [];
 let urgentCase = [];
-const instance = axios.create({
-  // httpsAgent: agent
-});
-// axiosRetry(instance, {
-//   retries: 5, // Number of retries
-//   retryDelay: axiosRetry.exponentialDelay // Exponential backoff
-// });
+const instance = axios.create({});
 function printProgress() {
-  // process.stdout.clearLine(); // Clear the current line
-  // process.stdout.cursorTo(0); // Move the cursor to the beginning of the line
-  // process.stdout.write(`Urgent: ${urgentCase.length}/${totalUrgentCase}\t`);
-  // process.stdout.write(`Ordinary: ${ordinaryCase.length}/${totalOrdinaryCase}`);
-  console.log(`Urgent: ${urgentCase.length}/${totalUrgentCase}`);
-  console.log(`Ordinary: ${ordinaryCase.length}/${totalOrdinaryCase}`);
+  process.stdout.clearLine(); // Clear the current line
+  process.stdout.cursorTo(0); // Move the cursor to the beginning of the line
+  process.stdout.write(`Urgent: ${urgentCase.length}/${totalUrgentCase}\t`);
+  process.stdout.write(`Ordinary: ${ordinaryCase.length}/${totalOrdinaryCase}`);
 }
 
 function generateFile() {
@@ -84,7 +73,6 @@ function generateFile() {
   }
 }
 function getCookie(date) {
-  console.log('GETTTINNG COOKKIEEE');
   return new Promise(async (resolve, reject) => {
     try {
       const axiosResponse = await instance.request({
@@ -99,10 +87,8 @@ function getCookie(date) {
         url: 'https://phhc.gov.in/home.php?search_param=jud_cl',
         data: `cl_date='${date}'&t_jud_code=655&t_list_type=&submit=Search+Case`
       });
-      console.log('API HIT COMPLTEREEE');
       sessCookie = axiosResponse.headers['set-cookie'][0];
       instance.defaults.headers.common['Cookie'] = sessCookie;
-      console.log('COOKKIEEE', sessCookie);
       resolve(true);
     } catch (err) {
       console.log('!!!!ERROR WHILE CREATING SESSION!!!!');
@@ -212,7 +198,6 @@ async function getCaseDetails(hrefStr, caseType, relatedWith = '', oldValues = {
     printProgress();
     if (ordinaryCase.length + urgentCase.length === totalCase) {
       finalData = [...ordinaryCase, ...urgentCase];
-      console.log();
       generateFile();
     }
   } catch (err) {
@@ -222,7 +207,6 @@ async function getCaseDetails(hrefStr, caseType, relatedWith = '', oldValues = {
 }
 
 async function getTotalCase(conf) {
-  console.log('HITTING API...');
   const response = await instance.request({
     method: 'POST',
     header: {

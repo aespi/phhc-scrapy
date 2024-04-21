@@ -28,26 +28,22 @@ function watchAppJS(callback) {
 app.get('/download', (req, res) => {
   const filePath = __dirname + '/data.csv'; // Change this if app.js is in a different directory
   const date = req.query.date;
-  //   fs.unlink(filePath, async err => {
-  //     if (err) {
-  //       console.error('Error deleting file:');
-  //     } else {
   try {
     ENGINE.start(date);
+    watchAppJS(async () => {
+      console.log('data.csv has been generated or modified!');
+      res.download(filePath, function (err) {
+        if (err) {
+          console.log(err, 'FAILEDD TO DOWNLOAD FILE');
+          throw 'Failedddd to dwonlaod file';
+        } else {
+          console.log('FILE DOWNLOADEDDD BITCHH');
+        }
+      });
+    });
   } catch (err) {
     res.status(500).send('FAILEDDDDDD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!###########');
   }
-  watchAppJS(async () => {
-    console.log('data.csv has been generated or modified!');
-    res.download(filePath, function (err) {
-      if (err) {
-        console.log(err, 'FAILEDD TO DOWNLOAD FILE');
-        res.status(500).send('FAILEDDDDDD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!###########');
-      } else {
-        console.log('FILE DOWNLOADEDDD BITCHH');
-      }
-    });
-  });
   // }
 });
 // });
