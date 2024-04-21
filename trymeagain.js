@@ -14,8 +14,8 @@ const reqHeader = [
   'Category'
 ];
 let totalCase = 0;
-let totalUrgentCase = 0;
-let totalOrdinaryCase = 0;
+let totalUrgentCase = -1;
+let totalOrdinaryCase = -1;
 let sessCookie = '';
 let finalData = [];
 let ordinaryCase = [];
@@ -192,7 +192,7 @@ async function getCaseDetails(hrefStr, caseType, relatedWith = '', oldValues = {
     } else {
       urgentCase.push(result);
     }
-    printProgress();
+    // printProgress();
     if (ordinaryCase.length + urgentCase.length === totalCase) {
       finalData = [...ordinaryCase, ...urgentCase];
       generateFile();
@@ -243,6 +243,20 @@ async function getTotalCase(conf) {
       totalUrgentCase = hrefValues.length;
     }
     totalCase = totalCase + hrefValues.length;
+    if (totalOrdinaryCase !== -1 && totalUrgentCase !== -1) {
+      if (totalCase === 0) {
+        generateFile();
+      } else {
+        console.log(
+          'totalCase->> ',
+          totalCase,
+          '\tOrdinary->>',
+          totalOrdinaryCase,
+          '\tUrgent->>',
+          totalUrgentCase
+        );
+      }
+    }
   } catch (err) {
     console.log('FAILED TO GET TOTAL CASESS NUMBERS');
     throw err;
@@ -252,8 +266,8 @@ async function getTotalCase(conf) {
 module.exports.start = async function (date) {
   try {
     totalCase = 0;
-    totalUrgentCase = 0;
-    totalOrdinaryCase = 0;
+    totalUrgentCase = -1;
+    totalOrdinaryCase = -1;
     sessCookie = '';
     finalData = [];
     ordinaryCase = [];
@@ -281,12 +295,6 @@ module.exports.start = async function (date) {
       config.forEach(c => {
         getTotalCase(c);
       });
-      setTimeout(() => {
-        console.log('\ntotalCase->>\t', totalCase);
-        if (totalCase === 0) {
-          generateFile();
-        }
-      }, 2000);
     }
   } catch (err) {
     console.log('!!!!!ENGINE failed to start!!!!!', err);
