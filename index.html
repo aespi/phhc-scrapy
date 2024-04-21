@@ -109,7 +109,12 @@
           .then(response => response.json())
           .then(data => {
             const tableContainer = document.getElementById('table-container');
+            const child = document.getElementById('table-111');
+            if (child) {
+              tableContainer.removeChild(child);
+            }
             const table = document.createElement('table');
+            table.id = 'table-111';
             const thead = document.createElement('thead');
             const tbody = document.createElement('tbody');
 
