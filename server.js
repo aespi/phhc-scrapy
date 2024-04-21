@@ -7,53 +7,56 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
+try {
+  // Middleware
+  // Function to watch for changes to the app.js file
+  function watchAppJS(callback) {
+    // Path to the directory containing app.js
+    const directoryPath = __dirname; // Change this if app.js is in a different directory
 
-// Middleware
-// Function to watch for changes to the app.js file
-function watchAppJS(callback) {
-  // Path to the directory containing app.js
-  const directoryPath = __dirname; // Change this if app.js is in a different directory
-
-  // Start watching the directory for changes
-  fs.watch(directoryPath, (eventType, filename) => {
-    // Check if the changed file is app.js
-    if (filename === 'data.csv') {
-      // Execute the callback function
-      callback();
-    }
-  });
-}
-
-// Route to handle PDF generation request
-app.get('/download', (req, res) => {
-  const filePath = __dirname + '/data.csv'; // Change this if app.js is in a different directory
-  const date = req.query.date;
-  try {
-    ENGINE.start(date);
-    watchAppJS(async () => {
-      console.log('data.csv has been generated or modified!');
-      res.download(filePath, function (err) {
-        if (err) {
-          console.log(err, 'FAILEDD TO DOWNLOAD FILE');
-          throw 'Failedddd to dwonlaod file';
-        } else {
-          console.log('FILE DOWNLOADEDDD BITCHH');
-        }
-      });
+    // Start watching the directory for changes
+    fs.watch(directoryPath, (eventType, filename) => {
+      // Check if the changed file is app.js
+      if (filename === 'data.csv') {
+        // Execute the callback function
+        callback();
+      }
     });
-  } catch (err) {
-    res.status(500).send('FAILEDDDDDD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!###########');
   }
-  // }
-});
-// });
 
-// Route to serve the HTML page
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+  // Route to handle PDF generation request
+  app.get('/download', (req, res) => {
+    const filePath = __dirname + '/data.csv'; // Change this if app.js is in a different directory
+    const date = req.query.date;
+    try {
+      ENGINE.start(date);
+      watchAppJS(async () => {
+        console.log('data.csv has been generated or modified!');
+        res.download(filePath, function (err) {
+          if (err) {
+            console.log(err, 'FAILEDD TO DOWNLOAD FILE');
+            // throw 'Failedddd to dwonlaod file';
+          } else {
+            console.log('FILE DOWNLOADEDDD BITCHH');
+          }
+        });
+      });
+    } catch (err) {
+      res.status(500).send('FAILEDDDDDD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!###########');
+    }
+    // }
+  });
+  // });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+  // Route to serve the HTML page
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
+
+  // Start server
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+} catch {
+  console.log('UNEXPECTED ERROR!!');
+}
