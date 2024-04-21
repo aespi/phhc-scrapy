@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
+let watcher;
 // const ongoingRequests = {};
 // const cancelReq = new AbortController();
 try {
@@ -25,7 +26,7 @@ try {
     // Path to the directory containing app.js
     const directoryPath = __dirname; // Change this if app.js is in a different directory
 
-    fs.watch(directoryPath, (eventType, filename) => {
+    watcher = fs.watch(directoryPath, (eventType, filename) => {
       // Check if the changed file is app.js
       if (filename === 'data.csv') {
         // Execute the callback function
@@ -38,36 +39,30 @@ try {
     res.sendFile(path.join(__dirname, 'index.html'));
   });
   // Route to handle PDF generation request
-  app.get('*', (req, res) => {
+  app.post('/download', (req, res) => {
     const filePath = __dirname + '/data.csv'; // Change this if app.js is in a different directory
     const date = req.query.date;
     try {
-      // if (ongoingRequests['/download']) {
-      //   // Cancel previous request
-      //   cancelReq.abort();
-      //   delete ongoingRequests['/download'];
-      // }
-      // ongoingRequests['/download'] = req;
       ENGINE.start(date);
       watchAppJS(async () => {
         console.log('data.csv has been generated or modified!');
         res.download(filePath, 'data.csv', function (err) {
           if (err) {
             console.log(err, 'FAILEDD TO DOWNLOAD FILE');
-            // res.status(500).send('FAILEDDDDDD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!###########');
           } else {
-            // delete ongoingRequests['/download'];
-            console.log('FILE DOWNLOADEDDD BITCHH');
-            // res.status(200).send('Thanksss!!');
+            console.log('FILE DOWNLOADED');
+            if (watcher) {
+              watcher.close();
+            }
           }
         });
       });
     } catch (err) {
       console.log(err);
-      res.status(500).send('FAILEDDDDDD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!###########');
+      res.status(500).send('Failed to start engine');
     }
-    // }
   });
+
   // });
 
   // Route to serve the HTML page

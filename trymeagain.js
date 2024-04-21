@@ -39,6 +39,7 @@ function generateFile() {
       if (!row[4].startsWith('PS') && !row[4].startsWith('--N')) {
         row[4] = 'PS ' + row[4].toUpperCase();
       }
+      return row;
       // if (!row[6].includes('138')) {
       //   return row;
       // }
@@ -56,7 +57,7 @@ function generateFile() {
       }
     });
   } catch (err) {
-    console.log('File saving FAILED.\n Try again....');
+    console.log('File saving FAILED.\n Try again....', err);
     throw new Error('FAILEDDD line 78');
   }
 }
@@ -281,7 +282,7 @@ module.exports.start = async function (date) {
         getTotalCase(c);
       });
       setTimeout(() => {
-        console.log('totalCase->>\t', totalCase);
+        console.log('\ntotalCase->>\t', totalCase);
         if (totalCase === 0) {
           generateFile();
         }
