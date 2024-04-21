@@ -8,6 +8,15 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 try {
+  // Set the timeout to 10 minutes (600,000 milliseconds)
+  const timeout = 600000; // 10 minutes in milliseconds
+
+  // Set the timeout for all incoming requests
+  app.use((req, res, next) => {
+    req.setTimeout(timeout);
+    res.setTimeout(timeout);
+    next();
+  });
   // Middleware
   // Function to watch for changes to the app.js file
   function watchAppJS(callback) {
